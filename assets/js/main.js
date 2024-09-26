@@ -99,7 +99,7 @@ function prevSlide() {
 
 // Inicia el deslizamiento automático
 function startAutoSlide() {
-  autoSlideInterval = setInterval(nextSlide, 4000);
+  autoSlideInterval = setInterval(nextSlide, 6000);
 }
 
 // Detiene el deslizamiento automático
@@ -110,7 +110,7 @@ function stopAutoSlide() {
 // Reinicia el temporizador de interacción
 function resetInteractionTimer() {
   clearTimeout(interactionTimeout);
-  interactionTimeout = setTimeout(startAutoSlide, 4000);
+  interactionTimeout = setTimeout(startAutoSlide, 5000);
 }
 
 // Eventos de deslizamiento (Swipe)
