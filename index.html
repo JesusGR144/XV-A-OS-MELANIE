@@ -5,68 +5,364 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis XV</title>
-    <link rel="icon" href="assets/img/xv-icon.png" type="image/png">
-
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/selima" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/selima" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <style>
+        :root {
+            --morado: #45286d;
+            --verde: #5e6f59;
+
+            --fuente-cursiva: "Great Vibes", italic;
+            --fuente-normal: "Libre Baskerville", serif;
+            --fuente-unica: "Selima";
+        }
+
+        html {
+            font-size: 62.5%;
+            /*1REM = 10px */
+            text-align: center;
+        }
+
+        body {
+            background-color: rgba(227, 208, 245, 0.5);
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: "Great Vibes", italic;
+            font-size: 7rem;
+            font-weight: 400;
+            font-style: oblique;
+            color: #45286d;
+        }
+
+        a {
+            text-decoration-color: #5e6f59;
+        }
+
+        .xv {
+            display: none;
+        }
+
+        .slider {
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            justify-content: left;
+            transition: transform 1.2s ease-in-out;
+        }
+
+        .info1 {
+            width: 100%;
+            height: 50vh;
+        }
+
+        .info1 h1 {
+            padding-left: 15vw;
+            margin-bottom: 2vh;
+        }
+
+        .info1 h2 {
+            font-family: "Selima";
+            font-size: 7rem;
+            color: var(--verde);
+            padding-left: 20vw;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: calc(100vw);
+            height: calc(100vh);
+            min-width: 100%;
+            min-height: 100%;
+            background-image: url(assets/img/flores-moradasc_1.webp);
+            /* background-image: url(assets/img/flores-moradas2.png); */
+            background-size: cover;
+            background-position: center;
+            /* background-repeat: no-repeat; */
+            opacity: 0;
+            animation: opacidad 2s forwards;
+        }
+
+        /* .slides .card:nth-child(-n + 3) {
+            background-image: url(assets/img/flores-moradas.png);
+        } */
+
+        .card:last-child {
+            display: flex;
+            background-image: url(assets/img/flores-moradas2c_1.webp);
+        }
+
+        @keyframes enlace {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes opacidad {
+            100% {
+                opacity: 1;
+            }
+
+            0%,
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* RESPONSIVIDAD */
+        @media (max-width: 576px) {
+            .xv {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: calc(35vh);
+                transform: scaleX(-1);
+            }
+
+            .info1 {
+                display: flex;
+                flex-direction: column;
+                /* align-items: flex-end; */
+                justify-content: center;
+                align-content: center;
+                margin-top: 40vh;
+            }
+
+            .info1 h2 {
+                margin: 0;
+            }
+
+            #slide2 {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                font-family: var(--fuente-normal);
+                color: var(--morado);
+                font-size: 1.5rem;
+            }
+
+            .info2 {
+                width: 80%;
+                margin-bottom: 15vh;
+            }
+
+            #slide3 {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .info3 {
+                display: flex;
+                flex-direction: column;
+                height: 50vh;
+                /* background-color: #5e6f59; */
+            }
+
+            .info3 div {
+                width: 50vw;
+            }
+
+            .info3 h2 {
+                margin: 0;
+            }
+
+            .parientes {
+                font-family: var(--fuente-cursiva);
+                color: #45286d;
+                font-size: 5rem;
+                font-weight: 400;
+            }
+
+            .nombres {
+                font-family: var(--fuente-normal);
+                color: var(--verde);
+                font-size: 1.5rem;
+            }
+
+            #padres {   
+                order: 1;                           
+                /* background-color: aliceblue; */
+                /* width: 40vw; */
+                margin-left: auto;
+                padding-right: 5vh;
+            }
+
+            #padrinos {   
+                order: 2;    
+                margin: 0 auto; 
+                margin-top: 3vh;        
+                /* background-color: aqua;  */
+                width: 70vw;                               
+            }
+
+            .info-ubicacion h1 {
+                text-align: left;
+                padding: 5vh 0 2vh 2vh;
+                margin-bottom: 0;
+            }
+
+            .info-ubicacion span {
+                font-family: "Selima";
+                color: #5e6f59;
+                font-size: 5rem;
+                padding-left: 5vw;
+            }
+
+            .lugar {
+                display: flex;
+                flex-direction: column;
+                width: 100vw;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 2rem
+            }
+
+            .lugar .sub {
+                /* font-family: "Great Vibes", italic;  */
+                font-family: var(--fuente-cursiva);
+                font-weight: 400;
+                font-size: 5rem;
+                margin: 0;
+                padding: 0;
+                color: var(--morado);
+            }
+
+            .lugar p {
+                font-family: var(--fuente-normal);
+                margin: 0;
+                padding: 0;
+                font-style: oblique;
+                font-size: 2rem;
+                color: var(--verde);
+            }
+
+            .lugar p:first-of-type {
+                margin-bottom: 5vh;
+            }
+
+            .lugar a .link {
+                font-family: "Libre Baskerville", serif;
+                font-size: 2rem;
+                color: #5e6f59;
+                padding: 0 3%;
+                animation: enlace 4s infinite;
+            }
+
+            .lugar a:first-of-type .link::before {
+                content: "\f51d";
+                font-family: "Font Awesome 6 Free";
+                font-size: 2.5rem;
+                margin-right: 1rem;
+            }
+
+            .lugar a:last-of-type .link::before {
+                content: "\f79f";
+                font-family: "Font Awesome 6 Free";
+                font-size: 2.5rem;
+                margin-right: 1rem;
+            }
+
+            /* .lugar a .icon {
+                text-decoration: none;
+            } */
+            /* .info-ubicacion #fecha {
+                position: absolute;
+                font-size: 5rem;                                        
+            } */
+        }
+    </style>
 </head>
 
 <body>
     <div class="slider">
         <div class="slides">
-            <div class="card"><div class="info">
-                <h1>Mis <br>XV Años</h1>
-                <h2>Melanie</h2>
-                <img class="xv" src="assets/img/15.png" alt="">
-            </div></div>
-            <div class="card"><div class="info">
-                <h3>"Algunos momentos marcan un antes y un después en la vida. <br>
-                    Quiero que formes parte de uno de ellos. <br>
-                    Te invito a mis quince años."</h3>
-            </div></div>
-            <div class="card"><div class="info">
-                <h2 class="mis-parientes info-gral">Mis Padres</h2>
-                <h3 class="nombres info-gral">Adriana Gaytán</h3>
-                <h3 class="nombres info-gral">Alberto Hernández</h3>
-                <h2 class="mis-parientes info-gral">Mis Padrinos</h2>
-                <h3 class="nombres info-gral">Saira Hernández</h3>
-                <h3 class="nombres info-gral">Antonio Gaytán</h3>
-            </div></div>
-            <div class="card"><div class="info">
-                <!-- church para el templo
-                <i class="fa-solid fa-church"></i> -->
-                <a href="https://www.google.com/maps/dir/?api=1&destination=21.1732044,-101.6469397&travelmode=driving" target="_blank">                    
-                    <h3>
-                        <i class="fa-solid fa-church"></i> Parroquia de San Pablo Apóstol</h3></a>
-                <!-- champagne-glasses -->
-                <a href="https://www.google.com/maps/dir/?api=1&destination=21.1837553,-101.6325277&travelmode=driving" target="_blank">
-                    <h3>
-                        <i class="fa-solid fa-champagne-glasses"></i> Terraza de Eventos Alejando</h3></a>
-            </div></div>
+            <div id="slide1" class="card">
+                <div class="info1">
+                    <h1>Mis XV Años</h1>
+                    <h2>Melanie</h2>
+                </div>
+                <img class="xv" src="assets/img/15c_1.webp" alt="">
+            </div>
+            <!--Fin card 1-->
 
+            <div id="slide2" class="card">
+                <div class="info2">
+                    <h3>"Algunos momentos marcan un antes y un después en la vida.
+                        <br><br>Quiero que formes parte de uno de ellos.
+                        <br><br>Te invito a mis XV años."
+                    </h3>
+                </div>
+            </div>
+            <!--Fin card 2-->
+
+            <div id="slide3" class="card">
+                <div class="info3">
+                    <div id="padres">
+                        <h2 class="parientes">Mis Padres</h2>
+                        <h3 class="nombres">Adriana Gaytán</h3>
+                        <h3 class="nombres">Alberto Hernández</h3>
+                    </div>
+                    <div id="padrinos">
+                        <h2 class="parientes">Mis Padrinos</h2>
+                        <h3 class="nombres">Saira Hernández</h3>
+                        <h3 class="nombres">Antonio Gaytán</h3>
+                    </div>
+                </div>
+            </div>
+            <!--fin card 3 -->
+
+            <div class="card">
+                <div class="info-ubicacion">
+                    <h1>Acompañame <br>este <span>12 de Octubre</span></h1>
+
+                </div>
+                <div class="lugar">
+                    <h2 class="sub">Ceremonia</h2>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=21.1732044,-101.6469397&travelmode=driving"
+                        target="_blank">
+                        <h3 class="link">                            
+                            Parroquia de San Pablo Apóstol
+                        </h3>
+                    </a>
+                    <p>5:00 p.m</p>
+                    <h2 class="sub">Evento</h2>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=21.1837553,-101.6325277&travelmode=driving"
+                        target="_blank">
+                        <h3 class="link">                            
+                            Terraza de Eventos Alejando
+                        </h3>
+                    </a>
+                    <p>6:30 p.m</p>
+                </div>
+            </div>
+            <!-- Fin card 4 -->
         </div>
-        <!-- <div class="controls">
-            <button id="prev">
-                <ion-icon name="chevron-back"></ion-icon>
-            </button>
-            <button id="next">
-                <ion-icon name="chevron-forward"></ion-icon>
-            </button>
-        </div> -->
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
